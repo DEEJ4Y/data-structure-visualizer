@@ -25,7 +25,7 @@ function StackElement({ element, data }) {
       gutter={10}
       target={
         <Button
-          style={{ width: 256 }}
+          style={{ width: 256, border: "1px solid white" }}
           radius={0}
           onMouseEnter={handlers.open}
           onMouseLeave={handlers.close}
@@ -44,7 +44,7 @@ function StackElement({ element, data }) {
 export default function StackDS() {
   const theme = useMantineTheme();
 
-  const [stack, setStack] = useState([]);
+  const [stack, setStack] = useState([4, 9, 7]);
   const [opened, handlers] = useDisclosure();
 
   const [pushForm, setPushForm] = useState("");
@@ -61,7 +61,7 @@ export default function StackDS() {
   const pop = () => {
     setStack((prev) => {
       const newArray = prev.filter((elem, idx) => {
-        return idx !== prev.length - 1;
+        return idx !== 0;
       });
       return newArray;
     });
@@ -98,8 +98,7 @@ export default function StackDS() {
               {stack && stack.length === 0 ? (
                 <Text>Stack is empty</Text>
               ) : (
-                stack.map((element, idx) => {
-                  console.log(element, idx);
+                stack.reverse().map((element, idx) => {
                   return (
                     <StackElement
                       key={`stack-element-${idx}`}
