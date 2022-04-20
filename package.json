@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && next export -o docs/",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "next build && next export -o docs/ && git add . && git commit -m \"Add updated build\" && git push origin main"
   },
   "dependencies": {
     "@mantine/core": "^4.1.4",
