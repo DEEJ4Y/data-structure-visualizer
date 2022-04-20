@@ -132,7 +132,7 @@ export function NavbarSimple() {
   ));
 
   return (
-    <Navbar width={{ sm: 300 }} p="md">
+    <Navbar width={{ 0: 256 }} p="md">
       <Navbar.Section grow>{links}</Navbar.Section>
     </Navbar>
   );
