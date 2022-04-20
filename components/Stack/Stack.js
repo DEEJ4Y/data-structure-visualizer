@@ -52,7 +52,7 @@ export default function StackDS() {
   const push = (val) => {
     setStack((prev) => {
       if (val) {
-        return [...prev, val];
+        return [val, ...prev];
       }
       return prev;
     });
@@ -98,7 +98,7 @@ export default function StackDS() {
               {stack && stack.length === 0 ? (
                 <Text>Stack is empty</Text>
               ) : (
-                stack.reverse().map((element, idx) => {
+                stack.map((element, idx) => {
                   return (
                     <StackElement
                       key={`stack-element-${idx}`}
