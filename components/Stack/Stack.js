@@ -92,7 +92,7 @@ export default function StackDS() {
               border: `1px solid ${theme.colors.blue[9]}`,
               width: 320,
             }}
-            onClick={handlers.toggle}
+            onMouseEnter={handlers.open}
           >
             <Stack spacing={0}>
               {stack && stack.length === 0 ? (
@@ -112,7 +112,7 @@ export default function StackDS() {
           </div>
         }
       >
-        <Stack>
+        <Stack onMouseLeave={handlers.close}>
           <div>
             <Input
               type="number"
