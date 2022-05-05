@@ -41,10 +41,9 @@ function StackElement({ element, data }) {
   );
 }
 
-export default function StackDS() {
+export default function StackDS({ setOperation, stack, setStack }) {
   const theme = useMantineTheme();
 
-  const [stack, setStack] = useState([4, 9, 7]);
   const [opened, handlers] = useDisclosure();
 
   const [pushForm, setPushForm] = useState("");
@@ -56,6 +55,7 @@ export default function StackDS() {
       }
       return prev;
     });
+    setOperation(() => "push");
   };
 
   const pop = () => {
@@ -65,15 +65,19 @@ export default function StackDS() {
       });
       return newArray;
     });
+    setOperation(() => "pop");
   };
 
   const empty = () => {
     setStack(() => []);
+    setOperation(() => "empty");
   };
 
   return (
     <>
-      <Title order={1}>Stack</Title>
+      <Title order={1} mt={-8}>
+        Stack
+      </Title>
       <Text mb="lg">
         Below is a visual representation of a stack. Click on the gap between
         the border and the elements to see the stack options.

@@ -1,10 +1,21 @@
-import { Paper, SimpleGrid } from "@mantine/core";
+import { Paper, Grid } from "@mantine/core";
 
-export default function DataStructureGrid({ dataStructure, code }) {
+export default function DataStructureGrid({ code, dataStructure, raw }) {
   return (
-    <SimpleGrid breakpoints={[{ 0: 256 }]}>
-      {dataStructure ? <Paper p="xl">{dataStructure}</Paper> : ""}
-      {code ? <Paper p="xl">{code}</Paper> : ""}
-    </SimpleGrid>
+    <Grid breakpoints={[{ 0: 256 }]}>
+      <Grid.Col span={6}>
+        {dataStructure ? <Paper p="lg">{dataStructure}</Paper> : ""}
+      </Grid.Col>
+      <Grid.Col span={6}>
+        {raw ? (
+          <Paper p="lg" style={{ height: "100%" }}>
+            {raw}
+          </Paper>
+        ) : (
+          ""
+        )}
+      </Grid.Col>
+      <Grid.Col span={12}>{code ? <Paper p="lg">{code}</Paper> : ""}</Grid.Col>
+    </Grid>
   );
 }

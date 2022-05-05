@@ -1,4 +1,9 @@
-import { AppShell as MantineAppShell, Navbar, Header } from "@mantine/core";
+import {
+  AppShell as MantineAppShell,
+  Navbar,
+  Header,
+  ScrollArea,
+} from "@mantine/core";
 import { NavbarSimple } from "./Navbar/Navbar";
 
 export default function AppShell({ children }) {
