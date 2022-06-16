@@ -1,4 +1,3 @@
-import { Title } from "@mantine/core";
 import { useState } from "react";
 import DataStructureGrid from "../components/DataStructureGrid/DataStructureGrid";
 import StackCodeExamples from "../components/Stack/Code";
