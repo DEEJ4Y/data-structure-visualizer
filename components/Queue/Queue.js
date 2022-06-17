@@ -36,7 +36,7 @@ function QueueElement({ element, data }) {
       }
     >
       <Stack>
-        <Text>Index {pos - 1}</Text>
+        <Text>Index {pos}</Text>
       </Stack>
     </Popover>
   );
@@ -104,7 +104,7 @@ export default function QueueDS({ queue, setQueue, setOperation }) {
                       <QueueElement
                         key={`queue-element-${idx}`}
                         element={element}
-                        data={{ pos: queue.length - idx }}
+                        data={{ pos: idx }}
                       />
                     );
                   })}
