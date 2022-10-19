@@ -23,21 +23,22 @@ function QueueElement({ element, data }) {
       placement="center"
       withArrow
       gutter={10}
-      target={
+    >
+      <Popover.Target>
         <Button
           style={{ border: "1px solid white" }}
-          // radius={0}
           m={2}
           onMouseEnter={handlers.open}
           onMouseLeave={handlers.close}
         >
           {element}
         </Button>
-      }
-    >
-      <Stack>
-        <Text>Index {pos}</Text>
-      </Stack>
+      </Popover.Target>
+      <Popover.Dropdown>
+        <Stack>
+          <Text>Index {pos}</Text>
+        </Stack>
+      </Popover.Dropdown>
     </Popover>
   );
 }
@@ -85,7 +86,8 @@ export default function QueueDS({ queue, setQueue, setOperation }) {
         withArrow
         gutter={10}
         closeOnClickOutside={true}
-        target={
+      >
+        <Popover.Target>
           <div
             style={{
               padding: "2rem",
@@ -113,35 +115,36 @@ export default function QueueDS({ queue, setQueue, setOperation }) {
               )}
             </div>
           </div>
-        }
-      >
-        <Stack onMouseLeave={handlers.close}>
-          <div>
-            <Input
-              type="number"
-              placeholder="Enqueue Queue value"
-              mb="xs"
-              value={enqueueForm}
-              onChange={(e) => {
-                setEnqueueForm(() => Number(e.target.value));
-              }}
-            ></Input>
-            <Button
-              variant="light"
-              style={{ width: "100%" }}
-              onClick={() => {
-                enqueue(enqueueForm);
-                setEnqueueForm(() => "");
-              }}
-            >
-              Enqueue
+        </Popover.Target>
+        <Popover.Dropdown>
+          <Stack onMouseLeave={handlers.close}>
+            <div>
+              <Input
+                type="number"
+                placeholder="Enqueue Queue value"
+                mb="xs"
+                value={enqueueForm}
+                onChange={(e) => {
+                  setEnqueueForm(() => Number(e.target.value));
+                }}
+              ></Input>
+              <Button
+                variant="light"
+                style={{ width: "100%" }}
+                onClick={() => {
+                  enqueue(enqueueForm);
+                  setEnqueueForm(() => "");
+                }}
+              >
+                Enqueue
+              </Button>
+            </div>
+            <Divider />
+            <Button variant="light" onClick={dequeue}>
+              Dequeue
             </Button>
-          </div>
-          <Divider />
-          <Button variant="light" onClick={dequeue}>
-            Dequeue
-          </Button>
-        </Stack>
+          </Stack>
+        </Popover.Dropdown>
       </Popover>
     </>
   );

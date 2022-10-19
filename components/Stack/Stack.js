@@ -23,7 +23,8 @@ function StackElement({ element, data }) {
       placement="center"
       withArrow
       gutter={10}
-      target={
+    >
+      <Popover.Target>
         <Button
           style={{ width: 256, border: "1px solid white" }}
           radius={0}
@@ -32,11 +33,13 @@ function StackElement({ element, data }) {
         >
           {element}
         </Button>
-      }
-    >
-      <Stack>
-        <Text>Index {pos - 1}</Text>
-      </Stack>
+      </Popover.Target>
+
+      <Popover.Dropdown>
+        <Stack>
+          <Text>Index {pos - 1}</Text>
+        </Stack>
+      </Popover.Dropdown>
     </Popover>
   );
 }
@@ -89,7 +92,8 @@ export default function StackDS({ setOperation, stack, setStack }) {
         withArrow
         gutter={10}
         closeOnClickOutside={true}
-        target={
+      >
+        <Popover.Target>
           <div
             style={{
               padding: "2rem",
@@ -114,38 +118,41 @@ export default function StackDS({ setOperation, stack, setStack }) {
               )}
             </Stack>
           </div>
-        }
-      >
-        <Stack onMouseLeave={handlers.close}>
-          <div>
-            <Input
-              type="number"
-              placeholder="Push Stack value"
-              mb="xs"
-              value={pushForm}
-              onChange={(e) => {
-                setPushForm(() => Number(e.target.value));
-              }}
-            ></Input>
-            <Button
-              variant="light"
-              style={{ width: "100%" }}
-              onClick={() => {
-                push(pushForm);
-                setPushForm(() => "");
-              }}
-            >
-              Push
+        </Popover.Target>
+
+        <Popover.Dropdown>
+          {" "}
+          <Stack onMouseLeave={handlers.close}>
+            <div>
+              <Input
+                type="number"
+                placeholder="Push Stack value"
+                mb="xs"
+                value={pushForm}
+                onChange={(e) => {
+                  setPushForm(() => Number(e.target.value));
+                }}
+              ></Input>
+              <Button
+                variant="light"
+                style={{ width: "100%" }}
+                onClick={() => {
+                  push(pushForm);
+                  setPushForm(() => "");
+                }}
+              >
+                Push
+              </Button>
+            </div>
+            <Divider />
+            <Button variant="light" onClick={pop}>
+              Pop
             </Button>
-          </div>
-          <Divider />
-          <Button variant="light" onClick={pop}>
-            Pop
-          </Button>
-          <Button variant="light" onClick={empty}>
-            Empty
-          </Button>
-        </Stack>
+            <Button variant="light" onClick={empty}>
+              Empty
+            </Button>
+          </Stack>
+        </Popover.Dropdown>
       </Popover>
     </>
   );
