@@ -1,4 +1,15 @@
-import { Center, Container, Stack, Text, Title } from "@mantine/core";
+import {
+  Center,
+  Container,
+  Grid,
+  Group,
+  Paper,
+  Stack,
+  Text,
+  Title,
+} from "@mantine/core";
+import Link from "next/link";
+import { getDataStructures } from "../components/AppShell/Navbar/Navbar";
 
 export default function Home() {
   return (
@@ -14,6 +25,26 @@ export default function Home() {
             structures.
           </Text>
         </Stack>
+        <Grid mt="xl">
+          {getDataStructures().map(({ link, label, ...rest }, idx) => {
+            return (
+              <Grid.Col key={`ds-card-${idx}`} md={6} sm={12}>
+                <Link passHref href={link}>
+                  <a>
+                    <Paper className="clickable-paper">
+                      <Group position="center">
+                        <rest.icon />
+                        <Text size="lg" weight="bold" px="lg" py="xs">
+                          {label}
+                        </Text>
+                      </Group>
+                    </Paper>
+                  </a>
+                </Link>
+              </Grid.Col>
+            );
+          })}
+        </Grid>
       </Container>
     </Center>
   );

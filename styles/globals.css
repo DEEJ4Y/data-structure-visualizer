@@ -11,6 +11,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -18,4 +22,9 @@ a {
 .full-width-height {
   width: 100%;
   height: 95vh;
+}
+
+.clickable-paper:hover {
+  background-color: rgba(25, 113, 194, 0.25);
+  color: #fff;
 }

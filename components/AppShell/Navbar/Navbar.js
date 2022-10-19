@@ -93,8 +93,10 @@ export const dataStructures = [
   { link: "/", label: "Home", icon: Home2 },
   { link: "/stack", label: "Stack", icon: Stack2 },
   { link: "/queue", label: "Queue", icon: ListNumbers },
-  { link: "/linked-list", label: "LinkedList", icon: ArrowRightSquare },
+  // { link: "/linked-list", label: "LinkedList", icon: ArrowRightSquare },
 ];
+
+export const getDataStructures = () => dataStructures.slice(1, 3);
 
 export function NavbarSimple() {
   const { classes, cx } = useStyles();
