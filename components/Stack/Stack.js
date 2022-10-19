@@ -19,7 +19,7 @@ function StackElement({ element, data }) {
   return (
     <Popover
       opened={opened}
-      position="right"
+      position="left"
       placement="center"
       withArrow
       gutter={10}

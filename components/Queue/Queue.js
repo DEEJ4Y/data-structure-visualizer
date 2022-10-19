@@ -92,6 +92,7 @@ export default function QueueDS({ queue, setQueue, setOperation }) {
             style={{
               padding: "2rem",
               border: `1px solid ${theme.colors.blue[9]}`,
+              display: "inline-block",
             }}
             onMouseEnter={handlers.open}
           >
